@@ -42,6 +42,12 @@ flowchart TB
 ```
 
 ```mermaid
+flowchart TB
+    user([User]) -->|tracks habits via| system[Habit Tracker]
+    system --> db[(Database)]
+```
+
+```mermaid
 %% Container view: your containers should match the tier table above.
 flowchart TB
     subgraph YourSystem [Your System]
@@ -49,6 +55,12 @@ flowchart TB
         api --> domain[Domain Model]
         domain --> db[(Database<br/>Data tier)]
     end
+```
+
+```mermaid
+flowchart TB
+    ui[Web UI<br/>Presentation] --> svc[Habit Service<br/>Service+Domain]
+    svc --> db[(Database<br/>Data)]
 ```
 
 ### UML — Class & Sequence (Session 3 studio)
@@ -61,6 +73,19 @@ classDiagram
         -name: String
         +doSomething()
     }
+```
+
+```mermaid
+classDiagram
+    class Habit {
+        -name: String
+        -createdDate: Date
+    }
+    class Completion {
+        -date: Date
+        +markDone()
+    }
+    Habit "1" --> "*" Completion : has
 ```
 
 ```mermaid
