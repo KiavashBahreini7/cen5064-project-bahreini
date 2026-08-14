@@ -27,10 +27,10 @@ instructor will follow it literally on conference days.]
 
 | Tier | Responsibilities in THIS system |
 |------|--------------------------------|
-| Presentation | [what your UI layer does] |
-| Service | [what your use-case/orchestration layer does] |
-| Domain | [your entities and business rules] |
-| Data | [how and where data is stored] |
+| Presentation | [what your UI layer does] Web page showing today's habits with checkboxes; a form to add a new habit; a streak display|
+| Service | [what your use-case/orchestration layer does] markDone(habitId): checks the habit exists, records today's completion, recalculates the streak|
+| Domain | [your entities and business rules] Habit (name, created date), Completion (habit, date) — rule: "a habit can only be marked done once per day"|
+| Data | [how and where data is stored] Stores habits and completions in a database, behind a HabitRepository interface|
 
 ### C4 — Context & Container (Session 3 studio)
 
