@@ -1,18 +1,19 @@
 package com.example.habittracker.service;
    import com.example.habittracker.domain.HabitLog;
+   import com.example.habittracker.domain.StreakCalculator;
    import java.time.Clock;
    import java.time.LocalDate;
    import java.util.Collections;
-   import java.util.Comparator;
    import java.util.HashSet;
-   import java.util.List;
    import java.util.Set;
    import java.util.UUID;
    public class HabitService {
        private final Set<HabitLog> logs = new HashSet<>();
        private final Clock clock;
-       public HabitService(Clock clock) {
+       private final StreakCalculator streakCalculator;
+       public HabitService(Clock clock, StreakCalculator streakCalculator) {
            this.clock = clock;
+           this.streakCalculator = streakCalculator;
        }
        public void markDone(UUID habitId) {
            if (habitId == null) {
@@ -24,21 +25,6 @@ package com.example.habittracker.service;
            return Collections.unmodifiableSet(logs);
        }
        public int getStreak(UUID habitId) {
-           List<LocalDate> dates = logs.stream()
-                   .filter(l -> l.habitId().equals(habitId))
-                   .map(HabitLog::date)
-                   .sorted(Comparator.reverseOrder())
-                   .toList();
-           int streak = 0;
-           LocalDate expected = LocalDate.now(clock);
-           for (LocalDate d : dates) {
-               if (d.equals(expected)) {
-                   streak++;
-                   expected = expected.minusDays(1);
-               } else {
-                   break;
-               }
-           }
-           return streak;
+           return streakCalculator.currentStreak(logs, habitId);
        }
    }
