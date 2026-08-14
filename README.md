@@ -13,8 +13,6 @@ This paragraph is your approval request — see the Project Brief, Section 2.]
 
 A simple habit tracker where users log daily habits and see a streak count. Core features: add a habit, mark it done today, view a 7-day streak, delete a habit.
 
-- [x] Started work on Add a habit (issue #1)
-
 ## How to run
 
 ```
@@ -118,4 +116,5 @@ Decisions live in [`docs/adr/`](docs/adr/). Start with ADR-001 in Session 4.
 A one-line note per week keeps your commit story readable:
 
 - Week 1 (Aug 24): repo created, three ideas drafted
+- [x] Started work on Add a habit (issue #1)
 - Week 2 (Aug 31): ...
