@@ -3,7 +3,9 @@ package com.example.habittracker.service;
    import java.time.Clock;
    import java.time.LocalDate;
    import java.util.Collections;
+   import java.util.Comparator;
    import java.util.HashSet;
+   import java.util.List;
    import java.util.Set;
    import java.util.UUID;
    public class HabitService {
@@ -16,10 +18,27 @@ package com.example.habittracker.service;
            if (habitId == null) {
                throw new IllegalArgumentException("Habit ID cannot be null");
            }
-           HabitLog log = new HabitLog(habitId, LocalDate.now(clock));
-           logs.add(log);
+           logs.add(new HabitLog(habitId, LocalDate.now(clock)));
        }
        public Set<HabitLog> getLogs() {
            return Collections.unmodifiableSet(logs);
+       }
+       public int getStreak(UUID habitId) {
+           List<LocalDate> dates = logs.stream()
+                   .filter(l -> l.habitId().equals(habitId))
+                   .map(HabitLog::date)
+                   .sorted(Comparator.reverseOrder())
+                   .toList();
+           int streak = 0;
+           LocalDate expected = LocalDate.now(clock);
+           for (LocalDate d : dates) {
+               if (d.equals(expected)) {
+                   streak++;
+                   expected = expected.minusDays(1);
+               } else {
+                   break;
+               }
+           }
+           return streak;
        }
    }
