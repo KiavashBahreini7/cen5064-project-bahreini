@@ -4,12 +4,14 @@
 ![CI](https://github.com/ORG/REPO/actions/workflows/ci.yml/badge.svg)
 -->
 
-**Student:** [Your Name] · **Course:** CEN 5064 Software Design, Fall 2026 · **Partner:** [@partner-github-username]
+**Student:** [Kiavash Bahreini] · **Course:** CEN 5064 Software Design, Fall 2026 · **Partner:** [@KiavashBahreini7]
 
 ## Project (approval paragraph — write this by Sun Aug 30)
 
 [One paragraph: What is the system? Who is it for? What are its 3–4 core features?
 This paragraph is your approval request — see the Project Brief, Section 2.]
+
+A simple habit tracker where users log daily habits and see a streak count. Core features: add a habit, mark it done today, view a 7-day streak, delete a habit.
 
 ## How to run
 
