@@ -118,3 +118,7 @@ A one-line note per week keeps your commit story readable:
 - Week 1 (Aug 24): repo created, three ideas drafted
 - [x] Started work on Add a habit (issue #1)
 - Week 2 (Aug 31): ...
+
+## Known Issues
+
+- Login form does not currently validate empty password fields.
