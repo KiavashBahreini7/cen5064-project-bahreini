@@ -122,3 +122,5 @@ A one-line note per week keeps your commit story readable:
 ## Known Issues
 
 - Login form does not currently validate empty password fields.
+
+- Working on: Add a new registration form for the project 
